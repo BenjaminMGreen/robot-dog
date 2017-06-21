@@ -9,25 +9,28 @@ import re
 from solid import *
 from solid.utils import *
 
-SEGMENTS = 48
+SEGMENTS = 32
 
 
-foot_radius = 30
-foot_height = 30
+foot_radius = 20
+foot_height = 50
 leg_base_diameter = 15
 leg_upper_diameter = 25
+leg_length = 150
 
 def foot():
-    f = sphere(foot_radius)
+    f = sphere(foot_radius) + cylinder(leg_base_diameter, foot_height - foot_radius)
+    f = hull()(f)
 
     return f
 
 def assembly():
     # Your code here!
-    a = foot() + up(foot_height)(foot())
+    a = foot()
 
     return a
 
 if __name__ == '__main__':
     a = assembly()
     scad_render_to_file(a, file_header='$fn = %s;' % SEGMENTS, include_orig_code=True)
+    scad_render(a)
