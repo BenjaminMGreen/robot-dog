@@ -12,14 +12,14 @@ from solid.utils import *
 SEGMENTS = 32
 
 
-foot_radius = 20
+foot_radius = 10
 foot_height = 50
 leg_base_diameter = 15
 leg_upper_diameter = 25
 leg_length = 150
 
 def foot():
-    f = sphere(foot_radius) + cylinder(leg_base_diameter, foot_height - foot_radius)
+    f = sphere(foot_radius) + cylinder(leg_base_diameter, foot_height - foot_radius, 0)
     f = hull()(f)
 
     return f
