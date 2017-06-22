@@ -33,4 +33,4 @@ def assembly():
 if __name__ == '__main__':
     a = assembly()
     scad_render_to_file(a, file_header='$fn = %s;' % SEGMENTS, include_orig_code=True)
-    scad_render(a)
+    print(scad_render(a))
